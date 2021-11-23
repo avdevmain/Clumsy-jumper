@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField]
-    private Rigidbody[] rb;
+    private Rigidbody torsoRb;
 
     [SerializeField]
     private Rigidbody[] legsrb;
@@ -29,9 +29,15 @@ public class Player : MonoBehaviour
     [SerializeField]
     private SimpleGroundCheck[] groundChecks;
 
-    private void Start() {
-        rb = GetComponentsInChildren<Rigidbody>();
-        
+    private int collectedCarrots = 0;
+
+    public void CollectCarrot()
+    {
+        collectedCarrots+=1;
+    }
+    public void ProcessFinish()
+    {
+        Debug.Log("Level finished");
     }
 
     private bool IsOnGround()
@@ -43,6 +49,14 @@ public class Player : MonoBehaviour
         }
 
         return result;
+    }
+
+
+    public void SpringEffect(Vector3 direction)
+    {
+   
+        torsoRb.AddForce(direction * 100f, ForceMode.Impulse);
+        
     }
 
     public void LeftBttn()
