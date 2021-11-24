@@ -55,7 +55,8 @@ public class Player : MonoBehaviour
     public void SpringEffect(Vector3 direction)
     {
    
-        torsoRb.AddForce(direction * 100f, ForceMode.Impulse);
+        //torsoRb.AddForce(direction * 300f, ForceMode.Impulse);
+        torsoRb.velocity = direction * 100f;
         
     }
 

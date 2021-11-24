@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 8947995999287070162}
   - component: {fileID: 6613920581334055192}
   m_Layer: 0
-  m_Name: buttonRound
+  m_Name: Spring button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

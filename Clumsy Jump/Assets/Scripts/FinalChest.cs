@@ -9,6 +9,9 @@ public class FinalChest : MonoBehaviour
     [SerializeField]
     private Player player;
 
+    private float cooldownTime = 0.25f;
+    private Coroutine cooldown;
+
     private void Start() {
         animator = GetComponent<Animator>();
     }
@@ -17,8 +20,15 @@ public class FinalChest : MonoBehaviour
 private void OnTriggerEnter(Collider other) {
     
     animator.SetTrigger("activate");
-
-    player.ProcessFinish();
+    if (cooldown==null)
+        cooldown = StartCoroutine(CooldownCorout());
+    
 }
+
+    IEnumerator CooldownCorout()
+    {
+        yield return new WaitForSecondsRealtime(cooldownTime);
+        player.ProcessFinish();
+    }
 
 }
