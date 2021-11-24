@@ -9,7 +9,7 @@ public class FinalChest : MonoBehaviour
     [SerializeField]
     private Player player;
 
-    private float cooldownTime = 0.25f;
+    private float cooldownTime = 0.45f;
     private Coroutine cooldown;
 
     private void Start() {

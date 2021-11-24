@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DG.Tweening;
 public class Player : MonoBehaviour
 {
 
@@ -26,6 +26,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Button right_bttn;
 
+
+    [SerializeField]
+    private Button pause_bttn;
+
+    [SerializeField]
+    private GameObject winScreen;
+
     [SerializeField]
     private SimpleGroundCheck[] groundChecks;
 
@@ -38,6 +45,16 @@ public class Player : MonoBehaviour
     public void ProcessFinish()
     {
         Debug.Log("Level finished");
+        //Also needs progress manager
+
+
+        //To be moved into separate UI_Manager
+        left_bttn.gameObject.SetActive(false);
+        right_bttn.gameObject.SetActive(false);
+        pause_bttn.gameObject.SetActive(false);
+
+        winScreen.SetActive(true);
+
     }
 
     private bool IsOnGround()
@@ -70,6 +87,7 @@ public class Player : MonoBehaviour
         {
             rigidbody.AddForce(new Vector3(0,0.65f,-0.5f) * 40f * rigidbody.mass, ForceMode.Impulse);
         }
+
     }
 
     public void RightBttn()
